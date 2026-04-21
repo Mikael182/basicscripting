@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <resource_id> <tag_key> <tag_value>"
+  echo ""
+  echo "Example:"
+  echo "  $0 /subscriptions/.../resourceGroups/rg1/providers/... env prod"
+  exit 1
+fi
+
+RESOURCE_ID="$1"
+TAG_KEY="$2"
+TAG_VALUE="$3"
+
+echo "Adding tag '${TAG_KEY}=${TAG_VALUE}' to resource..."
+
+az tag update \
+  --operation Merge \
+  --resource-id "$RESOURCE_ID" \
+  --tags "${TAG_KEY}=${TAG_VALUE}"
+
+echo "Done."

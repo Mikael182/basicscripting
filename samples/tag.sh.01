@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Replace the placeholder below with your full resource ID (copy from Step 3 in README-01.md)
+az tag update \
+  --operation Merge \
+  --resource-id "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP/providers/PROVIDER/TYPE/RESOURCE_NAME" \
+  --tags env=prod

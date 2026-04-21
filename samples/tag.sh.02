@@ -1,0 +1,10 @@
+#!/bin/bash
+
+RESOURCE_ID="/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP/providers/PROVIDER/TYPE/RESOURCE_NAME"
+TAG_KEY="env"
+TAG_VALUE="prod"
+
+az tag update \
+  --operation Merge \
+  --resource-id "$RESOURCE_ID" \
+  --tags "${TAG_KEY}=${TAG_VALUE}"

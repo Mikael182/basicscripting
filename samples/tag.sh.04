@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$#" -ne 3 ]; then
+  echo "Usage: $0 <resource_id> <tag_key> <tag_value>"
+  exit 1
+fi
+
+RESOURCE_ID="$1"
+TAG_KEY="$2"
+TAG_VALUE="$3"
+
+echo "Checking existing tags on resource..."
+
+EXISTING=$(az resource show --ids "$RESOURCE_ID" \
+  --query "tags.\"${TAG_KEY}\"" --output tsv 2>/dev/null)
+
+if [[ "$EXISTING" == "$TAG_VALUE" ]]; then
+  echo "Tag '${TAG_KEY}=${TAG_VALUE}' already exists — skipping."
+elif [[ -n "$EXISTING" ]]; then
+  echo "Tag '${TAG_KEY}' exists with value '$EXISTING' — overwriting with '$TAG_VALUE'."
+  az tag update --operation Merge --resource-id "$RESOURCE_ID" --tags "${TAG_KEY}=${TAG_VALUE}"
+  echo "Tag updated."
+else
+  echo "Tag '${TAG_KEY}' does not exist — adding."
+  az tag update --operation Merge --resource-id "$RESOURCE_ID" --tags "${TAG_KEY}=${TAG_VALUE}"
+  echo "Tag added."
+fi

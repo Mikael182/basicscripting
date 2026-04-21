@@ -1,0 +1,45 @@
+# Logs
+*.log
+*.log.*
+
+# Credentials and secrets
+*.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.cer
+*.crt
+secrets/
+credentials/
+
+# Azure CLI
+.azure/
+azureProfile.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temp and backup files
+*.tmp
+*.bak
+*.orig
+
+# Student work files (keep reference scripts, ignore personal copies)
+resources-bad.csv
+results.csv
+test-trap.sh
+
+# AI
+**/.claude
+**/.copilot
