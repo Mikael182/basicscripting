@@ -90,7 +90,7 @@ az resource show \
 ```bash
 mkdir tagging-lab
 cd tagging-lab
-code tag.sh
+touch tag.sh
 ```
 
 Wklej poniższą zawartość. Zastąp placeholder `"PEŁNE_ID_ZASOBU"` wartością skopiowaną w Kroku 3:
