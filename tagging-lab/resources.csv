@@ -1,3 +1,4 @@
 resource_group,resource_name,tag_key,tag_value
 Dummy,dummy1234,env,prod
-Dummy,dummy4321,owner,jan.kowalski 
+Dummy,dummy4321,owner,jan.kowalski
+EOF
